@@ -5,7 +5,7 @@
 }
 :root {
   --text-color: white;
-  --bg-url: url(./assets/assets/bg-desktop.jpg);
+  --bg-url: url(./assets/assets/bg-mobile.jpg);
   --strok-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.1);
   --surface-color-hover: rgba(255, 255, 255, 0.05);
@@ -15,7 +15,7 @@
 }
 .light {
   --text-color: black;
-  --bg-url: url(./assets/assets/bg-desktop-light.jpg);
+  --bg-url: url(./assets/assets/bg-mobile-light.jpg);
   --strok-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.1);
   --surface-color-hover: rgba(0, 0, 0, 0.05);
@@ -26,6 +26,7 @@ body * {
   color: var(--text-color);
   font-family: sans-serif;
   font-weight: 400;
+  
 }
 body {
   background-image: var(--bg-url);
@@ -36,6 +37,7 @@ body {
   justify-content: center;
   flex-direction: column;
   display: flex;
+  height: 100vh;
 }
 .switch {
   position: relative;
@@ -55,6 +57,10 @@ body {
   transform: translateY(-50%);
   left: 0;
   transition: ease-in-out 0.2s;
+  animation: slide-back 0.2s;
+}
+.light .switch button {
+  animation: slide-in 0.2s forwards;
 }
 .switch button:hover{
   border: 1px solid var(--text-color);
@@ -76,7 +82,8 @@ body {
   border-radius: 9999px;
 }
 .container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 0;
   height: 600px;
   padding: 0px 24px;
@@ -157,4 +164,37 @@ ion-icon {
 }
 .social_links a:hover {
   background: var(--surface-color-hover);
+}
+@media (min-width:700px) {
+  :root {
+    --bg-url: url(./assets/assets/bg-desktop.jpg);
+  }
+  .light {
+    --bg-url: url(./assets/assets/bg-desktop-light.jpg);
+  }
+  
+}
+@media (max-width:699) {
+  ul li a{
+    width: 60%;
+  padding: 30px 70px;
+  }
+}
+@keyframes slide-in {
+  from {
+    left:0;
+
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back {
+  from {
+    left:50%;
+
+  }
+  to {
+    left: 0;
+  }
 }
